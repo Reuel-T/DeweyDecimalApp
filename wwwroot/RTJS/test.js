@@ -185,13 +185,15 @@ async function init_stage(autoplay)
         console.log("document ready");
         $("#countdown_span").text(game_time);
 
+        var colours = Array("red", "blue", "green", "orange", "black");
+
         //create list items within the game area
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < currentOrder.length; i++) {
 
             $("#game_stage")
                 .append("" +
                     "<li><div class=\"book " + colours[0] + "\">" +
-                    //"<div class=\"spine_text\"><strong>" + books[i][1] + "</strong><br /><em>" + books[i][2] + "</em></div>" +
+                    "<div class=\"spine_text\"><strong>" + "TITLE" + "</strong><br /><em>" + "AUTHOR" + "</em></div>" +
                     "<div class=\"spine_shelfmark\">" + currentOrder[i] + "</div>" +
                     "</div></li>" +
             "");
