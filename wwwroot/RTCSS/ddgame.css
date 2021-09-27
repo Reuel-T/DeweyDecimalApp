@@ -1,0 +1,161 @@
+﻿
+#instructions {
+    width: 700px;
+    float: left;
+}
+
+#countdown {
+    margin-right: 20px;
+    float: right;
+    width: 130px;
+    height: 130px;
+    background-color: black;
+    background-image: url("../images/bg-countdown.png");
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 65px;
+    box-shadow: rgba(255, 255, 255, 0.1) -5px -5px 5px, rgba(0, 0, 0, 0.5) 5px 5px 5px;
+}
+
+    #countdown span {
+        font-family: Orbitron;
+        padding-top: 30px;
+        font-size: 60px;
+        color: #FFFFFF;
+        display: block;
+    }
+
+/* temp */
+#start_game {
+    font-family: Orbitron;
+    margin-top: 25px !important;
+}
+
+#dewey_decimal_game_container {
+    margin-top: 30px;
+    height: 560px;
+    position: relative;
+}
+
+#dewey_decimal_game_stage {
+    padding-left: 15px;
+}
+
+    #dewey_decimal_game_stage.game_over {
+        opacity: 0.5;
+        filter: alpha(opacity=50); /* For IE8 and earlier */
+    }
+
+    #dewey_decimal_game_stage ul {
+        margin: 0px;
+        padding: 0px;
+        display: inline;
+    }
+
+        #dewey_decimal_game_stage ul li {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            float: left;
+        }
+
+.book {
+    width: 122px;
+    height: 465px;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: -15px;
+    cursor: pointer;
+    border: 5px solid red;
+}
+
+.book_placeholder {
+    width: 120px;
+    height: 465px;
+    background-color: #faec8f;
+    background-image: url("../images/bg-placeholder.png");
+    border: 1px solid #ffcc00;
+    margin-left: -15px !important;
+}
+
+.book.red {
+    background-image: url("../images/spine-red.png");
+}
+
+.book.blue {
+    background-image: url("../images/spine-blue.png");
+}
+
+.book.green {
+    background-image: url("../images/spine-green.png");
+}
+
+.book.black {
+    background-image: url("../images/spine-black.png");
+}
+
+.book.orange {
+    background-image: url("../images/spine-orange.png");
+}
+
+.book .spine_text {
+    position: absolute;
+    height: 50px;
+    width: 350px;
+    left: -135px;
+    top: 190px;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    text-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
+}
+
+    .book .spine_text, .book .spine_text strong {
+        color: #FFFFFF !important;
+    }
+
+        .book .spine_text em {
+            font-size: 80%;
+        }
+
+.book .spine_shelfmark {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    width: 50px;
+    height: 42px;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 5px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #000000;
+    box-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
+}
+
+    .book .spine_shelfmark.hidden {
+        text-indent: -30000px;
+        color: transparent;
+    }
+
+#game_over_success,
+#game_over_fail {
+    width: 494px;
+    height: 561px;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0px;
+    right: 200px;
+    display: none;
+    cursor: pointer;
+}
+
+#game_over_success {
+    background-image: url("../images/penguin-well-done.png");
+}
+
+#game_over_fail {
+    background-image: url("../images/penguin-bad-luck.png");
+}

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using System.Text;
+@using System.Text.Json;
+@inject IHttpContextAccessor HttpContextAccessor;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section AddToHead{
+    <script type="text/javascript" src="@Url.Content("~/RTJS/test.js")"></script>
+}
+
+@{
+
+    var request = HttpContextAccessor.HttpContext.Request;
+
+    var host = request.Host.ToUriComponent();
+
+    var pathBase = request.PathBase.ToUriComponent();
+
+    string link = $"{request.Scheme}://{host}{pathBase}";
+
+    string jsoncallnums = ViewBag.JSONcallnums;
+}
+
+<button onclick="getBooks()">Get new list</button>
+
+<div id="countdown"><span></span></div>
+
+<button id="start_game_button" onclick="start_game()">Start Game</button>
+
+
+<div id="game_container">
+    <div id="game_stage"></div>
+    <div id="game_success"></div>
+    <div id="game_fail"></div>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@link</p>
+    <div id="_booklist"></div>
+    <br />
+    <div id="_shuffle"></div>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<script type="text/javascript">
+    setBaseURL("@link");
+</script>
