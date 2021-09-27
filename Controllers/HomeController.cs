@@ -26,7 +26,7 @@ namespace DeweyDecimalApp.Controllers
             Random rnd = new Random();
             List<string> books = new List<string>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 //generate a random number 1 >= n <= 999
                 int number = rnd.Next(1, 1000);

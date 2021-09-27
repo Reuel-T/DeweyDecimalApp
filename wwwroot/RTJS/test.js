@@ -31,6 +31,8 @@ async function start_game()
 {
     let url = `${baseURL}/home/GenerateCallNos`;
     //let response = await fetch(url);
+    //clear the array before getting new stuff
+    sortedArray = []
 
     await fetch(url)
         .then(function (response) {
@@ -48,34 +50,6 @@ async function start_game()
         })//fn response
         .catch(err => console.error(err));
 }
-
-
-////https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-////Gets the books from the MVC App
-//async function getBooks() {
-//    let url = `${baseURL}/home/GenerateCallNos`;
-//    //let response = await fetch(url);
-
-//    console.log("Getting Books");
-
-//    await fetch(url)
-//        .then(function (response) {
-//            // response.json() returns a promise, use the same .then syntax to work with the results
-//            response.json().then(function (books) {
-//                console.log("Got books");
-//                books.forEach(function (book) {
-//                    sortedArray.push(book);
-//                });//foreach
-//                console.log("SA");
-//                console.log(sortedArray);
-
-                
-
-//                return;
-//            });//response json. then
-//        })//fn response
-//        .catch(err => console.error(err));
-//}
 
 //https://www.tutorialrepublic.com/faq/how-to-display-all-items-in-array-using-loop-in-jquery.php
 //display the books in the two arrays
@@ -155,21 +129,25 @@ async function init_stage(autoplay)
     //compares the current order to the correct order
     function orderCorrect()
     {
-        console.log("current_order:");
-        console.log(currentOrder);
-        console.log("correct_order:");
+        //console.log("current_order:");
+        //console.log(currentOrder);
+        //console.log("correct_order:");
+        //console.log(correctOrder);
         console.log(correctOrder);
+        console.log(currentOrder);
 
-        console.log("+ JOIN");
-        console.log(currentOrder.join(","));
-        console.log(correctOrder.join(","));
+        //console.log("+ JOIN");
+        //console.log(currentOrder.join(","));
+        //console.log(correctOrder.join(","));
 
         if (currentOrder.join(",") == correctOrder.join(","))
         {
+            console.log(true);
             return true;
         }
         else
         {
+            console.log(false);
             return false;
         }
     }
@@ -202,8 +180,10 @@ async function init_stage(autoplay)
         //wrap the list items within a ul
         $("#game_stage").wrapInner("<ul></ul>");
 
-        //disable text selection on these elements
-        $("#game_stage ul,#countdown").disableSelection();
+        $(function()
+        {
+            $("#game_stage ul,#countdown").disableSelection();
+        });
 
         //begins gameplay
         function play_game()
@@ -223,15 +203,15 @@ async function init_stage(autoplay)
             //what happens when the ul is updated
             update: function () {
 
-                current_order = []; // clear current order
+                currentOrder = []; // clear current order
 
                 //push the Dewey decimal text to the current order array
                 $(".book").each(function () {
-                    current_order.push($(".spine_shelfmark", this).text());
+                    currentOrder.push($(".spine_shelfmark", this).text());
                 });
 
                 //if the order is correct, the game is won 
-                if (is_correct_order()) {
+                if (orderCorrect()) {
                     //stop the timer
                     clearInterval(counter);
 
