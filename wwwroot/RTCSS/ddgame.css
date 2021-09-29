@@ -121,18 +121,18 @@
 #game_over_fail {
     width: 750px;
     height: inherit;
-    background-repeat: no-repeat;
     display: none;
     cursor: pointer;
     position: absolute;
+    bottom: 50px;
 }
 
 #game_over_success {
-    background-color: rgba(0, 255, 0, 0.61);    
+
     backdrop-filter: blur(5px);
 }
 
 #game_over_fail {
-    background-color: rgba(255, 0, 0, 0.61);
+
     backdrop-filter: blur(5px);
 }

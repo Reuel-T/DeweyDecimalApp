@@ -40,27 +40,52 @@
 
 <div id="dewey_decimal_game_container">
     <div id="dewey_decimal_game_stage"></div>
-    <div id="game_over_success">
-        <button id="start_game_button" onclick="start_game()"class="btn btn-primary">Start Game</button>
+
+    <div id="game_over_success" class="card">
+        <div class="card-body">
+            <h5 class="card-title">Nice One :)</h5>
+            <p id="score" class="card-text">
+                Your Score is : <span></span>
+            </p>
+            <a id="start_game_buttob" role="button" onclick="start_game()" class="btn btn-primary">Next Level</a>
+        </div>
     </div>
-    <div id="game_over_fail">
-        <form asp-action="SaveScore">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+
+    <div id="game_over_fail" class="card">
+        <div class="card-body">
+            <h5 class="card-title">Bad luck!</h5>
+            <p id="score" class="card-text">
+                Your Score is : <span></span>
+            </p>
+            <div id="score_submit">
+                <form asp-action="SaveScore">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" hidden>
+                        <label asp-for="Score" class="control-label"></label>
+                        <input asp-for="Score" id="frm_score" class="form-control" />
+                        <span asp-validation-for="Score" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="Score" class="control-label"></label>
-                <input asp-for="Score" id="frm_score" class="form-control" />
-                <span asp-validation-for="Score" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            <a id="start_game_buttob" role="button" onclick="start_game()" class="btn btn-primary">Try Again</a>
+        </div>
     </div>
+
+
+    @*<div id="game_over_success">
+            <button id="start_game_button" onclick="start_game()"class="btn btn-primary">Start Game</button>
+        </div>
+        <div id="game_over_fail">
+            
+        </div>*@
 </div>
 
 <script type="text/javascript">

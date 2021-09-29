@@ -18,6 +18,9 @@ let score = 0;
 //level counter
 let level = 0;
 
+//flag used for score updates
+let passed = false;
+
 //https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top
 //remove html entities in the string
 function cleanString(stringIn)
@@ -101,6 +104,10 @@ function shuffle(array) {
 
 async function init_stage(autoplay)
 {
+    if (passed == false) {
+        score = 0;
+    }
+
     //clear the stage before game start
     $("#dewey_decimal_game_stage").empty();
     $("#game_over_success").fadeOut();
@@ -219,6 +226,7 @@ async function init_stage(autoplay)
                     clearInterval(counter);
 
                     //reset the UI
+                    passed = true;
                     $("#start_game_button").fadeIn();
                     $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
                     $("#game_over_success").fadeIn();
@@ -251,12 +259,20 @@ async function init_stage(autoplay)
 
             //what happens when time expires
             if (count <= 0) {
+                passed = false;
                 console.log("timer done");
                 clearInterval(counter);
                 $("#start_game_button").fadeIn();
                 $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
                 $("#game_over_fail").fadeIn();
                 $("#dewey_decimal_game_stage").addClass("game_over");
+                if (score < 1) {
+                    $("#score_submit").hide();
+                }
+                else
+                {
+                    $("#score_submit").show();
+                }                
                 //setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
             }
         }//timer
