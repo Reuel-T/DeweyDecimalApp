@@ -36,7 +36,6 @@
     position: relative;
     margin-left: -15px;
     cursor: pointer;
-    border: 5px solid red;
     color: white;
 }
 
@@ -120,17 +119,20 @@
 
 #game_over_success,
 #game_over_fail {
-    width: inherit;
+    width: 750px;
     height: inherit;
     background-repeat: no-repeat;
     display: none;
     cursor: pointer;
+    position: absolute;
 }
 
 #game_over_success {
-    background-color: chartreuse;
+    background-color: rgba(0, 255, 0, 0.61);    
+    backdrop-filter: blur(5px);
 }
 
 #game_over_fail {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.61);
+    backdrop-filter: blur(5px);
 }

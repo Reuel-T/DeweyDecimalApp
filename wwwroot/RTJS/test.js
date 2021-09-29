@@ -227,16 +227,11 @@ async function init_stage(autoplay)
 
                     score += (count * 100);
                     $("#score span").text(score);
+                    $("#frm_score").attr('value', score);
 
                     //resets the stage and starts the game after half a second when the user clicks on the stage or book
                     //change to start game
-                    setTimeout(function () {
-                        $("#game_over_success, .book")
-                        .click(function () {
-                            $(".book").off("click");
-                            start_game(true);
-                        })
-                    }, 500);
+                    //setTimeout(function () { $("#game_over_success, .book").click(function () {$(".book").off("click");start_game(true);})}, 500);
                 }
             }
         });// sortable ul
@@ -262,30 +257,9 @@ async function init_stage(autoplay)
                 $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
                 $("#game_over_fail").fadeIn();
                 $("#dewey_decimal_game_stage").addClass("game_over");
-                setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
+                //setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
             }
         }//timer
-
-        if (autoplay) {
-            start_game();
-        } else {
-            //hides the text on the books
-            //$(".spine_shelfmark").addClass("hidden");
-
-            //if start game or a book is clicked, start the game
-            $("#start_game, .book").click(function () {
-                $(".book").off("click");
-
-                //if it is the first play of the level, start the game
-                if (first_play) {
-                    startGame();
-                } else {
-                    //set the stage
-                    init_stage(true);
-                }
-            });
-
-        }
 
     })//document ready
 

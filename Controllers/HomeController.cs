@@ -1,4 +1,5 @@
-﻿using DeweyDecimalApp.Models;
+﻿using DeweyDecimalApp.Helpers;
+using DeweyDecimalApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,6 +19,10 @@ namespace DeweyDecimalApp.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            if (!FileHelper.ScoreFileExists())
+            {
+                FileHelper.CreateFile();
+            }
         }
 
         [HttpGet]
@@ -25,7 +30,7 @@ namespace DeweyDecimalApp.Controllers
         {
             string period = "";
             Random rnd = new Random();
-            List<string> books = new List<string>();
+            DataStructuresLib.LinkedList<string> books = new DataStructuresLib.LinkedList<string>();
 
             for (int i = 0; i < 10; i++)
             {
@@ -35,26 +40,29 @@ namespace DeweyDecimalApp.Controllers
                 //generate a random number between 1 and 10
                 int pCheck = rnd.Next(1, 11);
 
-                if (pCheck > 7)
+                //30 % chance for addition to call number
+                if (pCheck > 8)
                 {
                     period = $".{rnd.Next(1, 1000)}";
                 }
 
                 string author = RandomString(3);
 
-                books.Add($"{number.ToString().PadLeft(3, '0')}{period} {author}");
+                books.Append($"{number.ToString().PadLeft(3, '0')}{period} {author}");
             }
 
-            books.Sort();
+            books.QuickSort(books.Head);
 
-            return books;
+            return books.ToList();
+        }
+
+        public IActionResult DeweyDecimalGame() 
+        {
+            return View();
         }
 
         public IActionResult Index()
         {
-            List<string> callnums = GenerateCallNos();
-            string jsonCallnums = JsonSerializer.Serialize(callnums);
-            ViewBag.JSONcallnums = jsonCallnums;
             return View();
         }
 
@@ -79,6 +87,17 @@ namespace DeweyDecimalApp.Controllers
             return new string(Enumerable.Repeat(chars, size)
               .Select(s => s[rnd.Next(s.Length)]).ToArray());
 
+        }
+        [HttpPost]
+        public IActionResult SaveScore(HighScoreModel s) 
+        {
+            FileHelper.AddScore(s);
+            return RedirectToAction("HighScores");
+        }
+
+        public IActionResult HighScores() 
+        {
+            return View(FileHelper.GetScores().OrderByDescending(x => x.Score));
         }
     }
 }
