@@ -3,13 +3,20 @@
 //BASE URL FOR MAKING HTTP REQUESTS - Reduces unnecessary Page Loads
 let baseURL;
 
-//sorted array - passed in from view on first run, get requests made afterward
+//sorted array  get requests made to MVC server
 let sortedArray = Array();
 
+//amount of time (seconds) that a round lasts
 let game_time = 30
 
 //value used to check if this is the first play
 let first_play = true;
+
+//score
+let score = 0;
+
+//level counter
+let level = 0;
 
 //https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top
 //remove html entities in the string
@@ -99,6 +106,7 @@ async function init_stage(autoplay)
     $("#game_success").fadeOut();
     $("#game_fail").fadeOut();
     $("#game_stage").removeClass("game_over");
+    $("#start_game_button").fadeOut();
 
     //remove undefined values from array if they show up
     //sortedArray = sortedArray.filter(function (x) {
@@ -129,16 +137,8 @@ async function init_stage(autoplay)
     //compares the current order to the correct order
     function orderCorrect()
     {
-        //console.log("current_order:");
-        //console.log(currentOrder);
-        //console.log("correct_order:");
-        //console.log(correctOrder);
         console.log(correctOrder);
         console.log(currentOrder);
-
-        //console.log("+ JOIN");
-        //console.log(currentOrder.join(","));
-        //console.log(correctOrder.join(","));
 
         if (currentOrder.join(",") == correctOrder.join(","))
         {
@@ -180,9 +180,10 @@ async function init_stage(autoplay)
         //wrap the list items within a ul
         $("#game_stage").wrapInner("<ul></ul>");
 
+        //disable text selection in the following elements
         $(function()
         {
-            $("#game_stage ul,#countdown").disableSelection();
+            $("#game_stage ul,#countdown, #score").disableSelection();
         });
 
         //begins gameplay
@@ -220,6 +221,10 @@ async function init_stage(autoplay)
                     $("#game_stage ul").sortable({ disabled: true });
                     $("#game_success").fadeIn();
                     $("#game_stage").addClass("game_over");
+                    $("#start_game_button").fadeIn();
+
+                    score += (count * 100);
+                    $("#score span").text(score);
 
                     //resets the stage and starts the game after half a second when the user clicks on the stage or book
                     //change to start game
@@ -227,12 +232,14 @@ async function init_stage(autoplay)
                         $("#game_success, .book")
                         .click(function () {
                             $(".book").off("click");
-                            init_stage(true);
+                            start_game(true);
                         })
                     }, 500);
                 }
             }
         });// sortable ul
+
+        $("#score span").text(score);
 
         // begin timer
         var count = game_time;
@@ -247,6 +254,7 @@ async function init_stage(autoplay)
 
             //what happens when time expires
             if (count <= 0) {
+                console.log("timer done");
                 clearInterval(counter);
                 $("#start_game_button").fadeIn();
                 $("#game_stage ul").sortable({ disabled: true });
