@@ -170,7 +170,7 @@ async function init_stage(autoplay)
 
             $("#dewey_decimal_game_stage")
                 .append("" +
-                    "<li><div class=\"book " + colours[0] + "\">" +
+                "<li><div class=\"book " + colours[Math.floor(Math.random() * colours.length)] + "\">" +
                     "<div class=\"spine_text\"><strong>" + "TITLE" + "</strong><br /><em>" + "AUTHOR" + "</em></div>" +
                     "<div class=\"spine_shelfmark\">" + currentOrder[i] + "</div>" +
                     "</div></li>" +
