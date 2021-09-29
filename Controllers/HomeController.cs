@@ -23,14 +23,23 @@ namespace DeweyDecimalApp.Controllers
         [HttpGet]
         public List<string> GenerateCallNos() 
         {
+            string period = "";
             Random rnd = new Random();
             List<string> books = new List<string>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 //generate a random number 1 >= n <= 999
                 int number = rnd.Next(1, 1000);
-                string period = $".{rnd.Next(1, 1000)}";
+
+                //generate a random number between 1 and 10
+                int pCheck = rnd.Next(1, 11);
+
+                if (pCheck > 7)
+                {
+                    period = $".{rnd.Next(1, 1000)}";
+                }
+
                 string author = RandomString(3);
 
                 books.Add($"{number.ToString().PadLeft(3, '0')}{period} {author}");

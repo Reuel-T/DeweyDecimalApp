@@ -7,32 +7,26 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 @section Scripts{
     <!--JQUERY Libraries for easy DOM Manipulation-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-    
 }
 
-@section AddToHead{ 
+@section AddToHead{
+    <link href="@Url.Content("~/RTCSS/ddgame.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="@Url.Content("~/RTJS/test.js")"></script>
 }
 
 @{
-
     var request = HttpContextAccessor.HttpContext.Request;
-
     var host = request.Host.ToUriComponent();
-
     var pathBase = request.PathBase.ToUriComponent();
-
     string link = $"{request.Scheme}://{host}{pathBase}";
-
-    string jsoncallnums = ViewBag.JSONcallnums;
 }
 
-<button onclick="getBooks()">Get new list</button>
+<div style="clear:both;"></div>
 
 <div id="countdown"><span></span></div>
 <div id="score"><span></span></div>
@@ -40,11 +34,12 @@
 
 <button id="start_game_button" onclick="start_game()">Start Game</button>
 
+<div class="clear_fix"></div>
 
-<div id="game_container">
-    <div id="game_stage"></div>
-    <div id="game_success"></div>
-    <div id="game_fail"></div>
+<div id="dewey_decimal_game_container">
+    <div id="dewey_decimal_game_stage"></div>
+    <div id="game_over_success"></div>
+    <div id="game_over_fail"></div>
 </div>
 
 <div class="text-center">

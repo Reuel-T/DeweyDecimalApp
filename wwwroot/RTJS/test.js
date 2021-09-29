@@ -7,7 +7,7 @@ let baseURL;
 let sortedArray = Array();
 
 //amount of time (seconds) that a round lasts
-let game_time = 30
+let game_time = 45;
 
 //value used to check if this is the first play
 let first_play = true;
@@ -102,10 +102,10 @@ function shuffle(array) {
 async function init_stage(autoplay)
 {
     //clear the stage before game start
-    $("#game_stage").empty();
-    $("#game_success").fadeOut();
-    $("#game_fail").fadeOut();
-    $("#game_stage").removeClass("game_over");
+    $("#dewey_decimal_game_stage").empty();
+    $("#game_over_success").fadeOut();
+    $("#game_over_fail").fadeOut();
+    $("#dewey_decimal_game_stage").removeClass("game_over");
     $("#start_game_button").fadeOut();
 
     //remove undefined values from array if they show up
@@ -168,7 +168,7 @@ async function init_stage(autoplay)
         //create list items within the game area
         for (var i = 0; i < currentOrder.length; i++) {
 
-            $("#game_stage")
+            $("#dewey_decimal_game_stage")
                 .append("" +
                     "<li><div class=\"book " + colours[0] + "\">" +
                     "<div class=\"spine_text\"><strong>" + "TITLE" + "</strong><br /><em>" + "AUTHOR" + "</em></div>" +
@@ -178,13 +178,15 @@ async function init_stage(autoplay)
         }
 
         //wrap the list items within a ul
-        $("#game_stage").wrapInner("<ul></ul>");
+        $("#dewey_decimal_game_stage").wrapInner("<ul></ul>");
+
+        $("#dewey_decimal_game_stage").append("<div class=\"clear_fix\"></div>");
 
         //disable text selection in the following elements
-        $(function()
-        {
-            $("#game_stage ul,#countdown, #score").disableSelection();
-        });
+        //$(function()
+        //{
+        $("#dewey_decimal_game_stage ul,#countdown, #score").disableSelection();
+        //});
 
         //begins gameplay
         function play_game()
@@ -199,7 +201,7 @@ async function init_stage(autoplay)
         }
 
         //enable the drag and drop feature on the game stage ul
-        $("#game_stage ul").sortable({
+        $("#dewey_decimal_game_stage ul").sortable({
             placeholder: "book_placeholder",
             //what happens when the ul is updated
             update: function () {
@@ -218,9 +220,9 @@ async function init_stage(autoplay)
 
                     //reset the UI
                     $("#start_game_button").fadeIn();
-                    $("#game_stage ul").sortable({ disabled: true });
-                    $("#game_success").fadeIn();
-                    $("#game_stage").addClass("game_over");
+                    $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
+                    $("#game_over_success").fadeIn();
+                    $("#dewey_decimal_game_stage").addClass("game_over");
                     $("#start_game_button").fadeIn();
 
                     score += (count * 100);
@@ -229,7 +231,7 @@ async function init_stage(autoplay)
                     //resets the stage and starts the game after half a second when the user clicks on the stage or book
                     //change to start game
                     setTimeout(function () {
-                        $("#game_success, .book")
+                        $("#game_over_success, .book")
                         .click(function () {
                             $(".book").off("click");
                             start_game(true);
@@ -257,10 +259,10 @@ async function init_stage(autoplay)
                 console.log("timer done");
                 clearInterval(counter);
                 $("#start_game_button").fadeIn();
-                $("#game_stage ul").sortable({ disabled: true });
-                $("#game_fail").fadeIn();
-                $("#game_stage").addClass("game_over");
-                setTimeout(function () { $("#game_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
+                $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
+                $("#game_over_fail").fadeIn();
+                $("#dewey_decimal_game_stage").addClass("game_over");
+                setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
             }
         }//timer
 
@@ -268,7 +270,7 @@ async function init_stage(autoplay)
             start_game();
         } else {
             //hides the text on the books
-            $(".spine_shelfmark").addClass("hidden");
+            //$(".spine_shelfmark").addClass("hidden");
 
             //if start game or a book is clicked, start the game
             $("#start_game, .book").click(function () {
