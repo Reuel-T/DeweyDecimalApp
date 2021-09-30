@@ -19,6 +19,7 @@
 @section AddToHead{
     <link href="@Url.Content("~/RTCSS/ddgame.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="@Url.Content("~/RTJS/test.js")"></script>
+    
 }
 
 @{
@@ -28,26 +29,29 @@
     string link = $"{request.Scheme}://{host}{pathBase}";
 }
 
+<h1>Replacing Books</h1>
+
+<div id="instructions">
+    <h1>Instructions</h1>
+    <h3>Use your mouse to rearrange the books in ascending order according to the Dewey Decimal System</h3>
+    <p>You earn points based on how quickly you pass a level as well as how many levels you pass. Have Fun! :)</p>
+    <br />
+    <button class="btn pink" style="color: white; border-radius:1.5rem" id="start_game_button" onclick="start_game()">Start Game</button>
+</div>
+
 <div style="clear:both;"></div>
-
-<div id="countdown"><span></span></div>
-<div id="score"><span></span></div>
-<div id="level"><span></span></div>
-
-<button id="start_game_button" onclick="start_game()">Start Game</button>
 
 <div class="clear_fix"></div>
 
 <div id="dewey_decimal_game_container">
     <div id="dewey_decimal_game_stage"></div>
 
-    <div id="game_over_success" class="card">
+    <div id="game_over_success" class="card" style="height: 350px">
         <div class="card-body">
             <h5 class="card-title">Nice One :)</h5>
-            <p id="score" class="card-text">
-                Your Score is : <span></span>
-            </p>
-            <a id="start_game_buttob" role="button" onclick="start_game()" class="btn btn-primary">Next Level</a>
+            <p id="score" class="card-text">Your Score is : <span></span></p>
+            <p id="streak" class="card-text">Your Current Streak is : <span></span></p>
+            <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary">Next Level</a>
         </div>
     </div>
 
@@ -78,16 +82,16 @@
             <a id="start_game_buttob" role="button" onclick="start_game()" class="btn btn-primary">Try Again</a>
         </div>
     </div>
-
-
-    @*<div id="game_over_success">
-            <button id="start_game_button" onclick="start_game()"class="btn btn-primary">Start Game</button>
-        </div>
-        <div id="game_over_fail">
-            
-        </div>*@
 </div>
+
+<div id="info">
+    <h3 id="countdown">Time Left: <span></span></h3>
+    <h3 id="streak">Current Streak: <span>0</span></h3>
+    <h3 id="score">Score: <span>0</span></h3>
+</div>
+
 
 <script type="text/javascript">
     setBaseURL("@link");
+    hideStuff();
 </script>

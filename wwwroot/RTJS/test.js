@@ -21,6 +21,7 @@ let level = 0;
 //flag used for score updates
 let passed = false;
 
+//tracks streak of passed levels
 let streak = 0;
 
 //https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top
@@ -37,10 +38,21 @@ function setBaseURL(URLin)
     console.log(URLin);
 }
 
+function hideStuff() {
+    $("#info").hide();
+    $("#dewey_decimal_game_container").hide();
+}
+
+
 //https://stackoverflow.com/questions/37663674/using-fetch-api-to-access-json
 //gets the books from server, then inits the stage area
 async function start_game()
 {
+    $("#instructions").hide();
+
+    $("#info").fadeIn();
+    $("#dewey_decimal_game_container").show();
+
     let url = `${baseURL}/home/GenerateCallNos`;
     //let response = await fetch(url);
     //clear the array before getting new stuff
@@ -117,11 +129,6 @@ async function init_stage(autoplay)
     $("#dewey_decimal_game_stage").removeClass("game_over");
     $("#start_game_button").fadeOut();
 
-    //remove undefined values from array if they show up
-    //sortedArray = sortedArray.filter(function (x) {
-    //    return x !== undefined;
-    //});
-
     console.log("Sorted Array");
     console.log(sortedArray);
 
@@ -174,7 +181,7 @@ async function init_stage(autoplay)
         console.log("document ready");
         $("#countdown_span").text(game_time);
 
-        var colours = Array("red", "blue", "green", "orange", "black");
+        var colours = Array("red1", "blue1", "green1", "orange1", "black1");
 
         //create list items within the game area
         for (var i = 0; i < currentOrder.length; i++) {
@@ -234,7 +241,11 @@ async function init_stage(autoplay)
                     {
                         game_time-=5;
                     }
+                    $("#streak").show();
 
+                    $("#score").show();
+
+                    $("#streak span").text(streak);
                     $("#score span").text(score);
                     $("#frm_score").attr('value', score);
                 }
