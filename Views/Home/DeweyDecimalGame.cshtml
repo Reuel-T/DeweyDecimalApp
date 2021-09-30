@@ -36,7 +36,7 @@
     <h3>Use your mouse to rearrange the books in ascending order according to the Dewey Decimal System</h3>
     <p>You earn points based on how quickly you pass a level as well as how many levels you pass. Have Fun! :)</p>
     <br />
-    <button class="btn pink" style="color: white; border-radius:1.5rem" id="start_game_button" onclick="start_game()">Start Game</button>
+    <button class="btn pink biggun" style="color: white; border-radius:1.5rem" id="start_game_button" onclick="start_game()">Start Game</button>
 </div>
 
 <div style="clear:both;"></div>
@@ -46,12 +46,15 @@
 <div id="dewey_decimal_game_container">
     <div id="dewey_decimal_game_stage"></div>
 
-    <div id="game_over_success" class="card" style="height: 350px">
-        <div class="card-body">
-            <h5 class="card-title">Nice One :)</h5>
-            <p id="score" class="card-text">Your Score is : <span></span></p>
-            <p id="streak" class="card-text">Your Current Streak is : <span></span></p>
-            <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary">Next Level</a>
+    <div id="game_over_success">
+        <div>
+            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px" >Nice One :)</h5>
+            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px" >Your Score is : <span></span></p>
+            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px" >Your Current Streak is : <span></span></p>
+            <div style="display:flex; justify-content: center">
+                <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary biggun">Next Level</a>
+                <a asp-action="Index" class="btn btn-primary biggun">Back To Home 🏠</a>
+            </div>
         </div>
     </div>
 
@@ -75,20 +78,23 @@
                         <span asp-validation-for="Score" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="submit" value="Save" class="btn btn-primary biggun" />
                     </div>
                 </form>
             </div>
-            <a id="start_game_buttob" role="button" onclick="start_game()" class="btn btn-primary">Try Again</a>
+            <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary biggun">Try Again</a>
+            <a asp-action="Index" class="btn btn-primary biggun">Back To Home 🏠</a>
         </div>
     </div>
 </div>
 
 <div id="info">
-    <h3 id="countdown">Time Left: <span></span></h3>
-    <h3 id="streak">Current Streak: <span>0</span></h3>
-    <h3 id="score">Score: <span>0</span></h3>
+    <h3 style="margin:0px;" class="biggun" id="countdown">Time Left: <span></span></h3>
+    <h3 style="margin:0px;" class="biggun" id="streak">Current Streak: <span>0</span></h3>
+    <h3 style="margin:0px;" class="biggun" id="score">Score: <span>0</span></h3>
 </div>
+<br />
+<a asp-action="Index" class="btn btn-primary biggun">Back</a>
 
 
 <script type="text/javascript">
