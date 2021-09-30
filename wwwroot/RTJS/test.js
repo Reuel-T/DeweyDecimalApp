@@ -21,6 +21,8 @@ let level = 0;
 //flag used for score updates
 let passed = false;
 
+let streak = 0;
+
 //https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top
 //remove html entities in the string
 function cleanString(stringIn)
@@ -144,7 +146,9 @@ async function init_stage(autoplay)
     //compares the current order to the correct order
     function orderCorrect()
     {
+        console.log("correct");
         console.log(correctOrder);
+        console.log("current");
         console.log(currentOrder);
 
         if (currentOrder.join(",") == correctOrder.join(","))
@@ -195,17 +199,6 @@ async function init_stage(autoplay)
         $("#dewey_decimal_game_stage ul,#countdown, #score").disableSelection();
         //});
 
-        //begins gameplay
-        function play_game()
-        {
-            first_play = false
-
-            //shows the book labels
-            $(".spine_shelfmark").removeClass("hidden");
-
-            //hides the start button
-            $("#start_game_button").fadeOut();
-        }
 
         //enable the drag and drop feature on the game stage ul
         $("#dewey_decimal_game_stage ul").sortable({
@@ -233,13 +226,17 @@ async function init_stage(autoplay)
                     $("#dewey_decimal_game_stage").addClass("game_over");
                     $("#start_game_button").fadeIn();
 
-                    score += (count * 100);
+                    streak++;
+
+                    score += ((count * 100) * (streak));
+
+                    if (game_time > 15)
+                    {
+                        game_time-=5;
+                    }
+
                     $("#score span").text(score);
                     $("#frm_score").attr('value', score);
-
-                    //resets the stage and starts the game after half a second when the user clicks on the stage or book
-                    //change to start game
-                    //setTimeout(function () { $("#game_over_success, .book").click(function () {$(".book").off("click");start_game(true);})}, 500);
                 }
             }
         });// sortable ul
