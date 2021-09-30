@@ -183,6 +183,7 @@ async function init_stage(autoplay)
     {
         console.log("document ready");
         $("#countdown_span").text(game_time);
+        $("#streak span").text(streak);
 
         var colours = Array("red1", "blue1", "green1", "orange1", "black1");
 
@@ -277,13 +278,16 @@ async function init_stage(autoplay)
                 $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
                 $("#game_over_fail").fadeIn();
                 $("#dewey_decimal_game_stage").addClass("game_over");
+                
                 if (score < 1) {
                     $("#score_submit").hide();
                 }
                 else
                 {
                     $("#score_submit").show();
-                }                
+                }
+                streak = 0;
+                game_time = 45;
                 //setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);
             }
         }//timer
