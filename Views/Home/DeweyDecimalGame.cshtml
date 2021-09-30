@@ -61,14 +61,14 @@
     <div id="game_over_fail">
         <div>
             <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Bad Luck!</h5>
-            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span></span></p>
-            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span></span></p>
+            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span>0</span></p>
+            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span>0</span></p>
             <div id="score_submit">
                 <form asp-action="SaveScore" style="display:flex; justify-content: center">
                     <div style="width: 90%">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Name" class="control-label biggun"></label>
+                            <label asp-for="Name" class="control-label biggun" style="font-size: 16px;"></label>
                             <input asp-for="Name" class="form-control biggun" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
@@ -79,14 +79,14 @@
                         </div>
                         <div style="display:flex; justify-content: center">
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
+                                <input type="submit" value="Save My Score" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div style="display:flex; justify-content: center">
-                <a id="start_game_button" role="button" onclick="start_game()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
+                <a id="start_game_button" role="button" onclick="start_game()" class="btn pink biggun btn-mdb cw btw">Retry</a>
                 <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
             </div>
         </div>
