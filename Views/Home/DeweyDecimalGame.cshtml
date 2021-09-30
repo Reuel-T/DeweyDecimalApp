@@ -4,7 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Replacing Books 📚";
 }
 
 @model DeweyDecimalApp.Models.HighScoreModel
@@ -32,11 +32,11 @@
 <h1 class="biggun page-title" >Replacing Books 📚</h1>
 
 <div id="instructions">
-    <h1>Instructions</h1>
-    <h3>Use your mouse to rearrange the books in ascending order according to the Dewey Decimal System</h3>
-    <p>You earn points based on how quickly you pass a level as well as how many levels you pass. Have Fun! :)</p>
+    <h1 class="biggun">Instructions</h1>
+    <h3 class="biggun">Use your mouse to rearrange the books in ascending order according to the Dewey Decimal System</h3>
+    <p class="biggun">You earn points based on how quickly you pass a level as well as how many levels you pass. Have Fun! :)</p>
     <br />
-    <button class="btn pink biggun" style="color: white; border-radius:1.5rem" id="start_game_button" onclick="start_game()">Start Game</button>
+    <button class="btn pink biggun btn-mdb cw" style="font-size: 16px;" id="start_game_button" onclick="start_game()">Start Game</button>
 </div>
 
 <div style="clear:both;"></div>
@@ -52,38 +52,43 @@
             <p id="score" class="biggun tac" style="padding: 15px; font-size:32px" >Your Score is : <span></span></p>
             <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px" >Your Current Streak is : <span></span></p>
             <div style="display:flex; justify-content: center">
-                <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary biggun">Next Level</a>
-                <a asp-action="Index" class="btn btn-primary biggun">Back To Home 🏠</a>
+                <a id="start_game_button" role="button" onclick="start_game()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
+                <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
             </div>
         </div>
     </div>
 
-    <div id="game_over_fail" class="card">
-        <div class="card-body">
-            <h5 class="card-title">Bad luck!</h5>
-            <p id="score" class="card-text">
-                Your Score is : <span></span>
-            </p>
+    <div id="game_over_fail">
+        <div>
+            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Bad Luck!</h5>
+            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span></span></p>
+            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span></span></p>
             <div id="score_submit">
-                <form asp-action="SaveScore">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" hidden>
-                        <label asp-for="Score" class="control-label"></label>
-                        <input asp-for="Score" id="frm_score" class="form-control" />
-                        <span asp-validation-for="Score" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary biggun" />
+                <form asp-action="SaveScore" style="display:flex; justify-content: center">
+                    <div style="width: 90%">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label biggun"></label>
+                            <input asp-for="Name" class="form-control biggun" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label asp-for="Score" class="control-label"></label>
+                            <input asp-for="Score" id="frm_score" class="form-control" />
+                            <span asp-validation-for="Score" class="text-danger"></span>
+                        </div>
+                        <div style="display:flex; justify-content: center">
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
-            <a id="start_game_button" role="button" onclick="start_game()" class="btn btn-primary biggun">Try Again</a>
-            <a asp-action="Index" class="btn btn-primary biggun">Back To Home 🏠</a>
+            <div style="display:flex; justify-content: center">
+                <a id="start_game_button" role="button" onclick="start_game()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
+                <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
+            </div>
         </div>
     </div>
 </div>
@@ -94,7 +99,10 @@
     <h3 style="margin:0px;" class="biggun" id="score">Score: <span>0</span></h3>
 </div>
 <br />
-<a asp-action="Index" class="btn btn-primary biggun">Back</a>
+
+<div style="display:flex; justify-content: center">
+    <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
+</div>
 
 
 <script type="text/javascript">

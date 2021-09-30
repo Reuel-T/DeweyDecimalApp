@@ -166,7 +166,7 @@
 #game_over_success,
 #game_over_fail {
     width: 750px;
-    height: 400px;
+    
     display: none;
     cursor: pointer;
     position: absolute;
@@ -176,10 +176,11 @@
 }
 
 #game_over_success {
-    
     background-color: white;
+    height: 400px;
 }
 
 #game_over_fail {
     background-color: white;
+    height: 500px;
 }
