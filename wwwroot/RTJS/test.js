@@ -1,5 +1,8 @@
 ﻿console.log("JS LOADED");
 
+//https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top
+//Game code adapted from here
+
 //BASE URL FOR MAKING HTTP REQUESTS - Reduces unnecessary Page Loads
 let baseURL;
 

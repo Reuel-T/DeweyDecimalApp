@@ -8,10 +8,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DataStructuresLib">
-      <HintPath>..\..\..\Documents\Campus Docs\YEAR 3\PROG 7312\Apps\DataStructuresLib\bin\Debug\net5.0\DataStructuresLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

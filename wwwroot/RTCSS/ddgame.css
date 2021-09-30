@@ -148,10 +148,12 @@
     height: 65px;
     background-color: white;
     text-align: center;
+    font-size: 13px;
     padding: 5px;
     font-weight: 600;
     border-radius: 5px;
     border-color: aqua;
+    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
     color: #000000;
     box-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
 }

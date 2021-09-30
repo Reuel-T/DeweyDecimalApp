@@ -1,4 +1,5 @@
-﻿using DeweyDecimalApp.Helpers;
+﻿using DeweyDecimalApp.DataStructs;
+using DeweyDecimalApp.Helpers;
 using DeweyDecimalApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -6,9 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+
 
 namespace DeweyDecimalApp.Controllers
 {
@@ -30,7 +29,7 @@ namespace DeweyDecimalApp.Controllers
         {
             string period = "";
             Random rnd = new Random();
-            DataStructuresLib.LinkedList<string> books = new DataStructuresLib.LinkedList<string>();
+            CLinkedList<BookModel> books = new CLinkedList<BookModel>();
 
             for (int i = 0; i < 10; i++)
             {
@@ -48,28 +47,35 @@ namespace DeweyDecimalApp.Controllers
 
                 string author = RandomString(3);
 
-                books.Append($"{number.ToString().PadLeft(3, '0')}{period} {author}");
+                BookModel b = new BookModel($"{number.ToString().PadLeft(3, '0')}{period} {author}");
+
+                books.Append(b);
             }
 
             books.QuickSort(books.Head);
 
-            return books.ToList();
+            List<string> callnums = new List<string>();
+            foreach (BookModel book in books)
+            {
+                callnums.Add(book.CallNumber);
+            }
+
+            return callnums;
         }
 
+        //returns view with game
         public IActionResult DeweyDecimalGame() 
         {
             return View();
         }
 
+        //homepage
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -88,6 +94,8 @@ namespace DeweyDecimalApp.Controllers
               .Select(s => s[rnd.Next(s.Length)]).ToArray());
 
         }
+
+        //post method for saving user score
         [HttpPost]
         public IActionResult SaveScore(HighScoreModel s) 
         {
@@ -95,6 +103,7 @@ namespace DeweyDecimalApp.Controllers
             return RedirectToAction("HighScores");
         }
 
+        //highscore page
         public IActionResult HighScores() 
         {
             return View(FileHelper.GetScores().OrderByDescending(x => x.Score));
