@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using System.Text;
+@using System.Text.Json;
+@inject IHttpContextAccessor HttpContextAccessor;
+
+@section Scripts{
+    <!--JQUERY Libraries for easy DOM Manipulation-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+}
+
+@section AddToHead{
+    <!--<link href="@Url.Content("~/RTCSS/ddgame.css")" rel="stylesheet" type="text/css" />-->
+    <script type="text/javascript" src="@Url.Content("~/RTJS/MatchingGame.js")"></script>
+}
+
+@{
+    //getting our base URL for use in JavaScript.
+
+    var request = HttpContextAccessor.HttpContext.Request;
+    var host = request.Host.ToUriComponent();
+    var pathBase = request.PathBase.ToUriComponent();
+    string link = $"{request.Scheme}://{host}{pathBase}";
+}
+
+<button class="btn pink biggun btn-mdb cw" style="font-size: 16px;" id="start_game_button" onclick="load_books()">Load Data</button>
+
+<p>QUESTIONS</p>
+<div id="QuestionRow">
+
+</div>
+
+
+<br />
+<p>ANSWERS</p>
+<div id="AnswerRow">
+
+</div>
+
+<script type="text/javascript">
+    setBaseURL("@link");
+</script>
