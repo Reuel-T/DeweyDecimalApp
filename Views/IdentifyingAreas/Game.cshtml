@@ -3,6 +3,12 @@
 @using System.Text.Json;
 @inject IHttpContextAccessor HttpContextAccessor;
 
+@{
+    ViewData["Title"] = "Identifying Areas";
+}
+
+@model DeweyDecimalApp.Models.HighScoreModel
+
 @section Scripts{
     <!--JQUERY Libraries for easy DOM Manipulation-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -10,7 +16,7 @@
 }
 
 @section AddToHead{
-    <!--<link href="@Url.Content("~/RTCSS/ddgame.css")" rel="stylesheet" type="text/css" />-->
+    <link href="@Url.Content("~/RTCSS/mgame.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="@Url.Content("~/RTJS/MatchingGame.js")"></script>
 }
 
@@ -23,20 +29,84 @@
     string link = $"{request.Scheme}://{host}{pathBase}";
 }
 
-<button class="btn pink biggun btn-mdb cw" style="font-size: 16px;" id="start_game_button" onclick="load_books()">Load Data</button>
+<h1 class="biggun page-title">Identifying Areas</h1>
 
-<p>QUESTIONS</p>
-<div id="QuestionRow">
+<div id="instructions">
+    <h1 class="biggun">Instructions</h1>
+    <h3 class="biggun">Match the call numbers to their areas!</h3>
+    <p class="biggun">You earn points based on how quickly you pass a level as well as how many levels you pass. Have Fun! :)</p>
+    <br />
+    <button class="btn pink biggun btn-mdb cw" style="font-size: 16px;" id="start_game_button" onclick="load_books()">Start Game</button>
+</div>
+
+
+<div id="game_container">
+
+    <div id="game_stage">
+        <div id="QuestionRow"></div>
+
+        <div></div>
+
+        <div id="AnswerRow"></div>
+    </div>
+
+    <div id="game_over_success">
+        <div>
+            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Nice One :)</h5>
+            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span></span></p>
+            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span></span></p>
+            <div style="display:flex; justify-content: center">
+                <a id="start_game_button" role="button" onclick="load_books()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
+                <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="game_over_fail">
+        <div>
+            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Bad Luck!</h5>
+            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span>0</span></p>
+            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span>0</span></p>
+            <div id="score_submit">
+                <form asp-action="SaveScore" style="display:flex; justify-content: center">
+                    <div style="width: 90%">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label biggun" style="font-size: 16px;"></label>
+                            <input asp-for="Name" class="form-control biggun" required />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label asp-for="Score" class="control-label"></label>
+                            <input asp-for="Score" id="frm_score" class="form-control" />
+                            <span asp-validation-for="Score" class="text-danger"></span>
+                        </div>
+                        <div style="display:flex; justify-content: center">
+                            <div class="form-group">
+                                <input type="submit" value="Save My Score" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="display:flex; justify-content: center">
+                <a id="start_game_button" role="button" onclick="load_books()" class="btn pink biggun btn-mdb cw btw">Retry</a>
+                <a asp-controller="Home" asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
+            </div>
+        </div>
+    </div>
 
 </div>
 
 
-<br />
-<p>ANSWERS</p>
-<div id="AnswerRow">
 
+<div id="info">
+    <h3 style="margin:0px;" class="biggun" id="countdown">Time Left: <span></span></h3>
+    <h3 style="margin:0px;" class="biggun" id="streak">Current Streak: <span>0</span></h3>
+    <h3 style="margin:0px;" class="biggun" id="score">Score: <span>0</span></h3>
 </div>
 
 <script type="text/javascript">
     setBaseURL("@link");
+    hideStuff();
 </script>

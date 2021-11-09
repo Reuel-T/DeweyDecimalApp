@@ -167,7 +167,7 @@
 #game_over_fail {
     width: 750px;
     
-    display: none;
+    /*display: none;*/
     cursor: pointer;
     position: absolute;
     bottom: 50px;

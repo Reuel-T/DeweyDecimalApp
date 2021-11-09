@@ -1,4 +1,5 @@
-﻿let callNumPairs = Array();
+﻿//array of call number key value pairs
+let callNumPairs = Array();
 
 //array of question divs
 let arrayQuestions = Array();
@@ -9,9 +10,32 @@ let arrayAnswers = Array();
 //array of selected cards
 let selectedCards = Array();
 
+//amount of time (seconds) that a round lasts
+let game_time = 60;
+
+//tracks progress in level
 let matches = 0;
 
+//internal round counter
 let round = 1;
+
+//timer counter value
+let time_left = 0;
+
+//number of streaks
+let streak = 0;
+
+//interval thingy
+var game_timer;
+
+//flag used for score updates
+let passed = false;
+
+let score = 0;
+
+function hideStuff() {
+    $("#info").hide();
+}
 
 //sets the base url of the app
 function setBaseURL(URLin) {
@@ -21,6 +45,11 @@ function setBaseURL(URLin) {
 
 async function load_books()
 {
+    $("#instructions").hide();
+    $("#info").fadeIn();
+    $("#game_over_fail").hide();
+    $("#game_over_success").hide();
+
     console.log("LOAD BOOKS");
 
     //request url for call num pairs
@@ -124,9 +153,9 @@ function create_cards()
         aCard.CLICKABLE = true;
 
         arrayAnswers.push(aCard);
-
-        add_cards();
     } 
+
+    add_cards();
 }
 
 //add cards to divs
@@ -142,6 +171,27 @@ function add_cards() {
     //append questions and answers to their divs
     arrayQuestions.forEach((card) => { qDiv.appendChild(card) });
     arrayAnswers.forEach((card) => { aDiv.appendChild(card) });
+
+    start_timer();
+}
+
+
+function start_timer()
+{
+    //set time left to game time
+    time_left = game_time;
+
+    //timer interval
+    game_timer = setInterval(() => {
+        time_left = time_left - 1;
+        $("#countdown span").text(time_left);
+        if (time_left <= 0) {
+            clearInterval(game_timer);
+            passed = false;
+            end_game();
+        }
+    }
+        , 1000);
 }
 
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -163,25 +213,31 @@ function shuffle(array) {
 }
 
 
-
 function match_cards(card) {
+    console.log(arrayQuestions.length);
+    console.log(matches);
 
     //checks if the user can click on the card
     if (card.CLICKABLE === true)
     {
         card.CLICKABLE = false;
+        card.classList.toggle('highlighted');
         console.log(arrayQuestions.length);
         card.firstChild.classList.toggle('biggun');
+        card.firstChild.classList.toggle('cw');
 
+        //no selected cards
         if (selectedCards.length === 0) {
             selectedCards.push(card);
 
             return;
         }
 
+        //1 selected card
         if (selectedCards.length === 1) {
             selectedCards.push(card);
 
+            //if cards match
             if (selectedCards[0].KEY === selectedCards[1].KEY) {
                 //alert('match');
                 selectedCards[0].remove();
@@ -189,10 +245,13 @@ function match_cards(card) {
 
                 selectedCards[0].firstChild.classList.toggle('biggun');
                 selectedCards[1].firstChild.classList.toggle('biggun');
+                selectedCards[0].firstChild.classList.toggle('cw');
+                selectedCards[1].firstChild.classList.toggle('cw');
+                
 
                 matches++;
                 console.log(matches);
-
+                //round win
                 if (matches === arrayQuestions.length) {
 
                     //holy crap spread operators are cool when you know how they work
@@ -202,11 +261,21 @@ function match_cards(card) {
                     answerCards.forEach((card) => { card.remove() })
 
                     round++;
+                    passed = true;
+                    end_game();
+                    return;
                 }
             }
-            else {
+            else
+            {
+                selectedCards[0].classList.toggle('highlighted');
+                selectedCards[1].classList.toggle('highlighted');
+
                 selectedCards[0].firstChild.classList.toggle('biggun');
                 selectedCards[1].firstChild.classList.toggle('biggun');
+
+                selectedCards[0].firstChild.classList.toggle('cw');
+                selectedCards[1].firstChild.classList.toggle('cw');
 
                 selectedCards[0].CLICKABLE = true;
                 selectedCards[1].CLICKABLE = true;
@@ -217,7 +286,65 @@ function match_cards(card) {
             selectedCards = Array();
             return;
         }
-    }
-
-    
+    }    
 }
+
+function end_game() {
+    console.log('Game Ended');
+
+    //show level passed screen
+    if (passed === true)
+    {
+        console.log('level passed');
+        //stop the timer
+        clearInterval(game_timer);
+
+        streak++;
+
+        score += ((time_left * 100) * (streak));
+
+        if (game_time > 15) {
+            game_time -= 5;
+        }
+        if (game_time <= 15) {
+            game_time = 15
+        }
+
+        $("#streak").show();
+
+        $("#score").show();
+
+        $("#streak span").text(streak);
+        $("#score span").text(score);
+        $("#frm_score").attr('value', score);
+
+        $("#start_game_button").fadeIn();
+        $("#game_over_success").fadeIn();
+
+
+    } else
+    //show level failed screen
+    {
+        console.log('level failed');
+
+        let answerCards = [...document.getElementById("AnswerRow").children];
+        answerCards.forEach((card) => { card.remove() });
+
+        let questionCards = [...document.getElementById("QuestionRow").children];
+        questionCards.forEach((card) => { card.remove() });
+
+        $("#start_game_button").fadeIn();
+        $("#game_over_fail").fadeIn();
+        //$("#game_stage").addClass("game_over");
+
+        if (score < 1) {
+            $("#score_submit").hide();
+        }
+        else {
+            $("#score_submit").show();
+        }
+        streak = 0;
+        game_time = 45;
+    }
+}
+
