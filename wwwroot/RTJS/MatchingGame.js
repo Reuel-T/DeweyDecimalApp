@@ -35,6 +35,7 @@ let score = 0;
 
 function hideStuff() {
     $("#info").hide();
+    $("#game_container").hide();
 }
 
 //sets the base url of the app
@@ -49,6 +50,7 @@ async function load_books()
     $("#info").fadeIn();
     $("#game_over_fail").hide();
     $("#game_over_success").hide();
+    $("#game_container").fadeIn();
 
     console.log("LOAD BOOKS");
 
