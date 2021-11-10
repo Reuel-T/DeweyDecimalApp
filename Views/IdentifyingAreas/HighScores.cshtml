@@ -1,0 +1,96 @@
+﻿@model IEnumerable<DeweyDecimalApp.Models.HighScoreModel>
+
+@{
+    ViewData["Title"] = "High Scores ✨";
+}
+
+<style>
+    body {
+        background-color: #90CAF9
+    }
+
+    table{
+        background-color: white;
+        margin-top: 30px;
+    }
+
+    .head-line{
+        font-size : 24px;
+    }
+
+    .first {
+        font-size: 20px;
+        color: #e91e63;
+    }
+
+    .second{
+        font-size: 18px;
+    }
+
+    .third{
+        font-size: 16px;
+    }
+
+</style>
+
+<h1 class="biggun page-title">High Scores ✨</h1>
+
+<a asp-controller="Home" asp-action="Index" class="btn pink biggun btn-block cw" style="font-size: 16px;">Back to Home 🏠</a>
+
+<table class="table">
+    <thead class="black white-text">
+        <tr>
+            <th class="bld head-line" scope="col"></th>
+            <th class="bld head-line" scope="col">Name</th>
+            <th class="bld head-line" scope="col">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1;
+
+            @foreach (var item in Model)
+            {
+                switch (i)
+                {
+                    case 1:
+                        {
+                            <tr>
+                                <th class="first bld" scope="row">@i</th>
+                                <td class="first bld"> @Html.DisplayFor(modelItem => item.Name)</td>
+                                <td class="first bld"> @Html.DisplayFor(modelItem => item.Score)</td>
+                            </tr>
+                            break;
+                        }
+                    case 2:
+                        {
+                            <tr>
+                                <th class="second bld" scope="row">@i</th>
+                                <td class="second bld"> @Html.DisplayFor(modelItem => item.Name)</td>
+                                <td class="second bld"> @Html.DisplayFor(modelItem => item.Score)</td>
+                            </tr>
+                            break;
+                        }
+                    case 3:
+                        {
+                            <tr>
+                                <th class="third bld" scope="row">@i</th>
+                                <td class="third bld"> @Html.DisplayFor(modelItem => item.Name)</td>
+                                <td class="third bld"> @Html.DisplayFor(modelItem => item.Score)</td>
+                            </tr>
+                            break;
+                        }
+
+                    default:
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Score)</td>
+                        </tr>
+                        break;   
+                }
+                i++;
+            }
+        }
+    </tbody>
+</table>
+

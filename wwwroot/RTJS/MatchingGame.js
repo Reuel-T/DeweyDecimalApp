@@ -304,7 +304,7 @@ function end_game() {
         score += ((time_left * 100) * (streak));
 
         if (game_time > 15) {
-            game_time -= 5;
+            game_time -= 10;
         }
         if (game_time <= 15) {
             game_time = 15

@@ -12,32 +12,22 @@ namespace DeweyDecimalApp.Helpers
     {
         public static string HighScoreFile = "HighScores.json";
         public static string CallNumFile = "CallNums.json";
+        public static string MatchingScoreFile = "MatchingScores.json";
 
-        public static bool ScoreFileExists() 
+        #region BOOK SWAPPING
+        public static bool ScoreFileExists()
         {
             if (File.Exists(HighScoreFile))
             {
                 return true;
             }
-            else 
+            else
             {
                 return false;
             }
         }
 
-        public static bool CallNumFileExists() 
-        {
-            if (File.Exists(CallNumFile))
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-        }
-
-        public static void AddScore(HighScoreModel newScore) 
+        public static void AddScore(HighScoreModel newScore)
         {
             List<HighScoreModel> highScores = GetScores();
 
@@ -48,7 +38,74 @@ namespace DeweyDecimalApp.Helpers
             File.WriteAllText(HighScoreFile, scoreList);
         }
 
-        public static void CreateCallNumFile() 
+        public static void CreateFile()
+        {
+            List<HighScoreModel> highScores = new List<HighScoreModel>();
+
+            Random rnd = new Random();
+
+            highScores.Add(new HighScoreModel { Name = "Rootler", Score = 100000 });
+            highScores.Add(new HighScoreModel { Name = "Player1", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player2", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player3", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player4", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player5", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player6", Score = rnd.Next(1, 10001) });
+
+            string highScoreContent = JsonSerializer.Serialize(highScores);
+
+
+            using (StreamWriter sw = File.CreateText(HighScoreFile))
+            {
+                sw.WriteLine(highScoreContent);
+            }
+        }
+
+        public static List<HighScoreModel> GetScores()
+        {
+            return JsonSerializer.Deserialize<List<HighScoreModel>>(File.ReadAllText(HighScoreFile));
+        }
+
+        #endregion
+
+
+        #region MATCHING GAME
+        public static bool CallNumFileExists()
+        {
+            if (File.Exists(CallNumFile))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool MScoreFileExists()
+        {
+            if (File.Exists(MatchingScoreFile))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static void AddMatchingScore(HighScoreModel newScore)
+        {
+            List<HighScoreModel> highScores = GetMatchingScores();
+
+            highScores.Add(newScore);
+
+            string scoreList = JsonSerializer.Serialize(highScores);
+
+            File.WriteAllText(MatchingScoreFile, scoreList);
+        }
+
+        public static void CreateCallNumFile()
         {
             Dictionary<string, string> callNums = new Dictionary<string, string>();
 
@@ -66,7 +123,7 @@ namespace DeweyDecimalApp.Helpers
             //https://www.library.illinois.edu/infosci/research/guides/dewey/
 
             string CallNumContent = JsonSerializer.Serialize(callNums);
-            
+
             using (StreamWriter sw = File.CreateText(CallNumFile))
             {
                 sw.WriteLine(CallNumContent);
@@ -74,38 +131,42 @@ namespace DeweyDecimalApp.Helpers
 
         }
 
-        public static void CreateFile() 
+        public static void CreateMatchingScoreFile()
         {
             List<HighScoreModel> highScores = new List<HighScoreModel>();
 
             Random rnd = new Random();
 
-            highScores.Add(new HighScoreModel { Name = "Rootler", Score = 100000 }) ;
-            highScores.Add(new HighScoreModel { Name = "Player1", Score = rnd.Next(1,10001) }) ;
-            highScores.Add(new HighScoreModel { Name = "Player2", Score = rnd.Next(1, 10001) }) ;
-            highScores.Add(new HighScoreModel { Name = "Player3", Score = rnd.Next(1, 10001) }) ;
-            highScores.Add(new HighScoreModel { Name = "Player4", Score = rnd.Next(1, 10001) }) ;
-            highScores.Add(new HighScoreModel { Name = "Player5", Score = rnd.Next(1, 10001) }) ;
-            highScores.Add(new HighScoreModel { Name = "Player6", Score = rnd.Next(1, 10001) }) ;
+            highScores.Add(new HighScoreModel { Name = "Rootler", Score = 100000 });
+            highScores.Add(new HighScoreModel { Name = "Player1", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player2", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player3", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player4", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player5", Score = rnd.Next(1, 10001) });
+            highScores.Add(new HighScoreModel { Name = "Player6", Score = rnd.Next(1, 10001) });
 
             string highScoreContent = JsonSerializer.Serialize(highScores);
 
 
-            using (StreamWriter sw = File.CreateText(HighScoreFile)) 
+            using (StreamWriter sw = File.CreateText(MatchingScoreFile))
             {
                 sw.WriteLine(highScoreContent);
             }
         }
 
-        public static List<HighScoreModel> GetScores() 
+
+        public static List<HighScoreModel> GetMatchingScores()
         {
-            return JsonSerializer.Deserialize<List<HighScoreModel>>(File.ReadAllText(HighScoreFile));
+            return JsonSerializer.Deserialize<List<HighScoreModel>>(File.ReadAllText(MatchingScoreFile));
         }
 
-        public static Dictionary<string, string> GetKeyValuePairs() 
+        public static Dictionary<string, string> GetKeyValuePairs()
         {
             return JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(CallNumFile));
         }
+
+        #endregion
+
 
     }
 }

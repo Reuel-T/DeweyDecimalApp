@@ -1,5 +1,6 @@
 ﻿using DeweyDecimalApp.DataStructs;
 using DeweyDecimalApp.Helpers;
+using DeweyDecimalApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace DeweyDecimalApp.Controllers
             if (!FileHelper.CallNumFileExists())
             {
                 FileHelper.CreateCallNumFile();
+            }
+
+            if (!FileHelper.MScoreFileExists())
+            {
+                FileHelper.CreateMatchingScoreFile();
             }
         }
 
@@ -47,8 +53,7 @@ namespace DeweyDecimalApp.Controllers
                 }
             }
 
-            //use list of key value objs because js does not have dictionaries
-            //passing the dictionary would need some unneeded conversion
+            //use list of key value objs for JS use
             List<JSKeyValueModel> jsret = new List<JSKeyValueModel>();
 
             foreach (int num in randomNums)
@@ -58,8 +63,20 @@ namespace DeweyDecimalApp.Controllers
 
             return jsret;
         }
-        
 
 
+        //post method for saving user score
+        [HttpPost]
+        public IActionResult SaveScore(HighScoreModel s)
+        {
+            FileHelper.AddMatchingScore(s);
+            return RedirectToAction("HighScores");
+        }
+
+        //highscore page
+        public IActionResult HighScores()
+        {
+            return View(FileHelper.GetMatchingScores().OrderByDescending(x => x.Score));
+        }
     }
 }

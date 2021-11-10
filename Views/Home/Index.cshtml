@@ -35,8 +35,8 @@
                 Learn to sort books using the Dewey Decimal System!
             </p>
 
-            <a asp-action="DeweyDecimalGame" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 8px 0px 8px 0px;" role="button">Play Game</a>
-            <a asp-action="HighScores" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 0px;" role="button">High Scores</a>
+            <a asp-controller="Home" asp-action="DeweyDecimalGame" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 8px 0px 8px 0px;" role="button">Play Game</a>
+            <a asp-controller="Home" asp-action="HighScores" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 0px;" role="button">High Scores</a>
 
         </div>
 
@@ -61,13 +61,11 @@
             <h4 class="card-title">Identifying Areas</h4>
             <!--Text-->
             <p class="card-text">
-                Coming Soon!
+                Indentify Areas within the Dewey Decimal System!
             </p>
 
-            <a asp-action="Index" asp-controller="IdentifyingAreas" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 8px 0px 8px 0px;" role="button">Other Controller</a>
             <a asp-action="Game" asp-controller="IdentifyingAreas" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 8px 0px 8px 0px;" role="button">GAME PAGE</a>
-
-
+            <a asp-action="HighScores" asp-controller="IdentifyingAreas" class="btn pink biggun btn-block cw" style="font-size: 16px;margin: 8px 0px 8px 0px;" role="button">Scores?</a>
         </div>
 
     </div>
