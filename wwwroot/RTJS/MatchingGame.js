@@ -50,7 +50,12 @@ async function load_books()
     $("#info").fadeIn();
     $("#game_over_fail").hide();
     $("#game_over_success").hide();
+
     $("#game_container").fadeIn();
+
+    //set the spans to the current streak and score
+    $("#streak span").text(streak);
+    $("#score span").text(score);
 
     console.log("LOAD BOOKS");
 
@@ -345,8 +350,11 @@ function end_game() {
         else {
             $("#score_submit").show();
         }
+
+        //reset score, streak and game time in case retry
+        score = 0;
         streak = 0;
-        game_time = 45;
+        game_time = 60;
     }
 }
 

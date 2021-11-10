@@ -56,7 +56,7 @@ async function start_game()
     $("#info").fadeIn();
     $("#dewey_decimal_game_container").show();
 
-    let url = `${baseURL}/home/GenerateCallNos`;
+    let url = `${baseURL}/ReplacingBooks/GenerateCallNos`;
     //let response = await fetch(url);
     //clear the array before getting new stuff
     sortedArray = []
