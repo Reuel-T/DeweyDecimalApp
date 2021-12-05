@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DeweyDecimalApp.Models.HighScoreModel>
 
 @{
-    ViewData["Title"] = "Replacing Books High Scores ✨";
+    ViewData["Title"] = "High Scores ✨";
 }
 
 <style>
@@ -33,9 +33,9 @@
 
 </style>
 
-<h1 class="biggun page-title">Replacing Books High Scores ✨</h1>
+<h1 class="biggun page-title">Finding Call Numbers High Scores ✨</h1>
 
-<a asp-action="Index" class="btn pink biggun btn-block cw" style="font-size: 16px;">Back to Home 🏠</a>
+<a asp-controller="Home" asp-action="Index" class="btn pink biggun btn-block cw" style="font-size: 16px;">Back to Home 🏠</a>
 
 <table class="table">
     <thead class="black white-text">

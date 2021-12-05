@@ -1,0 +1,758 @@
+{
+  "Root": {
+    "Data": {
+      "Number": "---",
+      "Description": "ROOT"
+    },
+    "Children": [
+      {
+        "Data": {
+          "Number": "100",
+          "Description": "Philosophy and Psychology"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "110",
+              "Description": "Metaphysics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "111",
+                  "Description": "Ontology"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "113",
+                  "Description": "Cosmology"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "114",
+                  "Description": "Space"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "115",
+                  "Description": "Time"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "130",
+              "Description": "Paranormal Phenomena"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "131",
+                  "Description": "Occult methods for achieving well being"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "135",
+                  "Description": "Dreams and Mysteries"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "137",
+                  "Description": "Divinatory Graphology"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "138",
+                  "Description": "Physiognomy"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "160",
+              "Description": "Logic"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "161",
+                  "Description": "Induction"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "162",
+                  "Description": "Deduction"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "167",
+                  "Description": "Hypotheses"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "169",
+                  "Description": "Analogy"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "170",
+              "Description": "Ethics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "171",
+                  "Description": "Systems and Doctrines"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "172",
+                  "Description": "Political Ethics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "173",
+                  "Description": "Ethics of Family Relationships"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "174",
+                  "Description": "Economic and Professional Ethics"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "200",
+          "Description": "Religion"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "210",
+              "Description": "Natural Theology"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "211",
+                  "Description": "Concepts of God"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "212",
+                  "Description": "Existence, Attributes of God"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "213",
+                  "Description": "Creation"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "216",
+                  "Description": "Good and Evil"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "300",
+          "Description": "Social Sciences"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "330",
+              "Description": "Economics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "331",
+                  "Description": "Labor Economics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "332",
+                  "Description": "Financial Economics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "333",
+                  "Description": "Land Economics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "334",
+                  "Description": "Cooperatives"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "340",
+              "Description": "Law"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "341",
+                  "Description": "International Law"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "342",
+                  "Description": "Constitutional and Administrative Law"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "345",
+                  "Description": "Criminal Law"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "344",
+                  "Description": "Private Law"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "400",
+          "Description": "Language"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "410",
+              "Description": "Linguistics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "411",
+                  "Description": "Writing Systems"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "412",
+                  "Description": "Etymology"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "413",
+                  "Description": "Dictionaries"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "414",
+                  "Description": "Phonology"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "500",
+          "Description": "Natural Sciences and Mathematics"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "510",
+              "Description": "Mathematics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "511",
+                  "Description": "General Principles"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "512",
+                  "Description": "Algebra and Number Theory"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "513",
+                  "Description": "Arithmetic"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "515",
+                  "Description": "Analysis"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "516",
+                  "Description": "Geometry"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "530",
+              "Description": "Physics"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "532",
+                  "Description": "Fluid Mechanics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "533",
+                  "Description": "Gas Mechanics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "536",
+                  "Description": "Heat"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "537",
+                  "Description": "Electricty and Electronics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "538",
+                  "Description": "Magnetism"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "600",
+          "Description": "Applied Sciences"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "610",
+              "Description": "Medicine"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "611",
+                  "Description": "Human Anatomy"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "612",
+                  "Description": "Human Physiology"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "613",
+                  "Description": "Promotion of Health"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "616",
+                  "Description": "Disesases"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "620",
+              "Description": "Engineering and Allied Operations"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "621",
+                  "Description": "Applied Physics"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "622",
+                  "Description": "Mining and Related Operations"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "624",
+                  "Description": "Civil Engineering"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "627",
+                  "Description": "Hydraulic Engineering"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "630",
+              "Description": "Agriculture"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "631",
+                  "Description": "Techniques, Equipment, Materials"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "632",
+                  "Description": "Plant Injuries, Diseases, Pests"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "633",
+                  "Description": "Field and Plantation crops"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "636",
+                  "Description": "Animal Husbandry"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "700",
+          "Description": "The Arts"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "710",
+              "Description": "Civic and Landscape Art"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "711",
+                  "Description": "Area Planning (Civic Art)"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "712",
+                  "Description": "Landscape Architecture"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "714",
+                  "Description": "Water Features"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "717",
+                  "Description": "Structures"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "720",
+              "Description": "Architecture"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "721",
+                  "Description": "Architectural Structure"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "725",
+                  "Description": "Public Structures"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "726",
+                  "Description": "Religious Buildings"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "727",
+                  "Description": "Buildings for Education and Research"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "730",
+              "Description": "Plastic Arts, Sculpture"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "732",
+                  "Description": "Sculpture to ca. 500"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "735",
+                  "Description": "Sculpture from 1400"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "738",
+                  "Description": "Ceramic Arts"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "739",
+                  "Description": "Art Metalwork"
+                },
+                "Children": []
+              }
+            ]
+          },
+          {
+            "Data": {
+              "Number": "750",
+              "Description": "Painting and Paintings"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "751",
+                  "Description": "Painting Techniques, Eqipment, Forms"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "752",
+                  "Description": "Color"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "754",
+                  "Description": "Genre Paintings"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "757",
+                  "Description": "Human Figures"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Data": {
+          "Number": "800",
+          "Description": "Literature"
+        },
+        "Children": [
+          {
+            "Data": {
+              "Number": "810",
+              "Description": "American Literature in English"
+            },
+            "Children": [
+              {
+                "Data": {
+                  "Number": "811",
+                  "Description": "Poetry"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "812",
+                  "Description": "Drama"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "813",
+                  "Description": "Fiction"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "814",
+                  "Description": "Essays"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "815",
+                  "Description": "Speeches"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "816",
+                  "Description": "Letters"
+                },
+                "Children": []
+              },
+              {
+                "Data": {
+                  "Number": "817",
+                  "Description": "Satire and Humour"
+                },
+                "Children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Size": 104
+}
