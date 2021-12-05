@@ -52,22 +52,13 @@
 
     <div id="game_over_success">
         <div>
+            <!--Header-->
             <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Nice One :)</h5>
-            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span></span></p>
-            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span></span></p>
-            <div style="display:flex; justify-content: center">
-                <a id="start_game_button" role="button" onclick="load_books()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
-                <a asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
-            </div>
-        </div>
-    </div>
+            <p id="score_go_pass" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span></span></p>
+            <p id="streak_go_pass" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span></span></p>
 
-    <div id="game_over_fail">
-        <div>
-            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Bad Luck!</h5>
-            <p id="score" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span>0</span></p>
-            <p id="streak" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span>0</span></p>
-            <div id="score_submit">
+            <!--Score Submission Form-->
+            <div id="score_submit" class="score">
                 <form asp-action="SaveScore" style="display:flex; justify-content: center">
                     <div style="width: 90%">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -81,6 +72,46 @@
                             <input asp-for="Score" id="frm_score" class="form-control" />
                             <span asp-validation-for="Score" class="text-danger"></span>
                         </div>
+                        <div style="display:flex; justify-content: center; align-content:center; flex-direction: column">
+                            <div style="width: 100%"><p>Saving your score ends your current run!</p></div>
+                            <div class="form-group">
+                                <input type="submit" value="Save My Score" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--Footer-->
+            <div style="display:flex; justify-content: center">
+                <a id="start_game_button" role="button" onclick="load_books()" class="btn pink biggun btn-mdb cw btw">Next Level</a>
+                <a asp-controller="Home" asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="game_over_fail">
+        <div>
+            <!--Header-->
+            <h5 class="biggun upsize tac" style="padding: 15px; font-size:48px">Bad Luck!</h5>
+            <p id="score_go_fail" class="biggun tac" style="padding: 15px; font-size:32px">Your Score is : <span>0</span></p>
+            <p id="streak_go_fail" class="biggun tac" style="padding: 15px; font-size:24px">Your Current Streak is : <span>0</span></p>
+
+            <!--Score Submission Form-->
+            <div id="score_submit_fail" class="score">
+                <form asp-action="SaveScore" style="display:flex; justify-content: center">
+                    <div style="width: 90%">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label biggun" style="font-size: 16px;"></label>
+                            <input asp-for="Name" class="form-control biggun" required />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label asp-for="Score" class="control-label"></label>
+                            <input asp-for="Score" id="frm_score_fail" class="form-control" />
+                            <span asp-validation-for="Score" class="text-danger"></span>
+                        </div>
                         <div style="display:flex; justify-content: center">
                             <div class="form-group">
                                 <input type="submit" value="Save My Score" class="btn pink biggun btn-block cw" style="font-size: 16px;" />
@@ -89,6 +120,8 @@
                     </div>
                 </form>
             </div>
+
+            <!--Buttons to return or start new game-->
             <div style="display:flex; justify-content: center">
                 <a id="start_game_button" role="button" onclick="load_books()" class="btn pink biggun btn-mdb cw btw">Retry</a>
                 <a asp-controller="Home" asp-action="Index" class="btn pink biggun btn-mdb cw btw">Back To Home 🏠</a>
@@ -100,8 +133,8 @@
 
 <div id="info">
     <h3 style="margin:0px;" class="biggun" id="countdown">Time Left: <span></span></h3>
-    <h3 style="margin:0px;" class="biggun" id="streak">Current Streak: <span>0</span></h3>
-    <h3 style="margin:0px;" class="biggun" id="score">Score: <span>0</span></h3>
+    <h3 style="margin:0px;" class="biggun" id="streak_info">Current Streak: <span>0</span></h3>
+    <h3 style="margin:0px;" class="biggun" id="score_info">Score: <span>0</span></h3>
 </div>
 
 <div style="display:flex; justify-content: center">

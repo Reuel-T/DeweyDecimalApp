@@ -1,10 +1,5 @@
 ﻿console.log("Tree Game Script Loaded");
 
-// Tooltips Initialization
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
-
 let baseURL;
 
 //correct objects -> used for debugging
@@ -312,7 +307,7 @@ function end_game()
     else
     {
         console.log("level failed");
-        clearInterval(game_timer)
+        clearInterval(game_timer);
         remove_cards();
 
         $("#frm_score_fail").attr('value', score);
@@ -340,10 +335,6 @@ function end_game()
         score = 0;
         streak = 0;
         game_time = 30;
-
-
-
-        console.log("awaiting input");
     }
 }
 
@@ -357,7 +348,7 @@ function start_timer()
         time_left = time_left - 1;
         $("#countdown span").text(time_left);
         if (time_left <= 0) {
-            clearInterval(game_time);
+            clearInterval(game_timer);
             passed = false;
             end_game();
         }

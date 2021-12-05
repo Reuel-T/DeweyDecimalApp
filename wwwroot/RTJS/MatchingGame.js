@@ -33,6 +33,22 @@ let passed = false;
 
 let score = 0;
 
+function kill()
+{
+    time_left = 10;
+}
+
+function pass() {
+    passed = true;
+    end_game();
+}
+
+function fail()
+{
+    passed = false;
+    end_game();
+}
+
 function hideStuff() {
     $("#info").hide();
     $("#game_container").hide();
@@ -53,9 +69,9 @@ async function load_books()
 
     $("#game_container").fadeIn();
 
-    //set the spans to the current streak and score
-    $("#streak span").text(streak);
-    $("#score span").text(score);
+    //info spans
+    $("#score_info span").text(score);
+    $("#streak_info span").text(streak);
 
     console.log("LOAD BOOKS");
 
@@ -263,9 +279,7 @@ function match_cards(card) {
 
                     //holy crap spread operators are cool when you know how they work
                     //https://stackoverflow.com/questions/222841/most-efficient-way-to-convert-an-htmlcollection-to-an-array
-                    let answerCards = [...document.getElementById("AnswerRow").children];
-
-                    answerCards.forEach((card) => { card.remove() })
+                    remove_cards();
 
                     round++;
                     passed = true;
@@ -298,6 +312,7 @@ function match_cards(card) {
 
 function end_game() {
     console.log('Game Ended');
+    remove_cards();
 
     //show level passed screen
     if (passed === true)
@@ -321,28 +336,19 @@ function end_game() {
 
         $("#score").show();
 
-        $("#streak span").text(streak);
-        $("#score span").text(score);
+        //form spans
+        $("#streak_go_pass span").text(streak);
+        $("#score_go_pass span").text(score);
+
+        //info spans
+        $("#score_info span").text(score);
+        $("#streak_info span").text(streak);
+
+        //sets the form value
         $("#frm_score").attr('value', score);
 
-        $("#start_game_button").fadeIn();
+
         $("#game_over_success").fadeIn();
-
-
-    } else
-    //show level failed screen
-    {
-        console.log('level failed');
-
-        let answerCards = [...document.getElementById("AnswerRow").children];
-        answerCards.forEach((card) => { card.remove() });
-
-        let questionCards = [...document.getElementById("QuestionRow").children];
-        questionCards.forEach((card) => { card.remove() });
-
-        $("#start_game_button").fadeIn();
-        $("#game_over_fail").fadeIn();
-        //$("#game_stage").addClass("game_over");
 
         if (score < 1) {
             $("#score_submit").hide();
@@ -351,10 +357,50 @@ function end_game() {
             $("#score_submit").show();
         }
 
+
+    } else
+    //show level failed screen
+    {
+        console.log('level failed');
+        clearInterval(game_timer);
+
+        remove_cards();
+
+        //sets the form value
+        $("#frm_score_fail").attr('value', score);
+
+        $("#start_game_button").fadeIn();
+        $("#game_over_fail").fadeIn();
+        //$("#game_stage").addClass("game_over");
+
+        if (score < 1) {
+            $("#score_submit_fail").hide();
+        }
+        else {
+            $("#score_submit_fail").show();
+        }
+
+        //form spans
+        $("#streak_go_fail span").text(streak);
+        $("#score_go_fail span").text(score);
+
+        //info spans
+        $("#score_info span").text(score);
+        $("#streak_info span").text(streak);
+
         //reset score, streak and game time in case retry
         score = 0;
         streak = 0;
         game_time = 60;
+    }
+
+    function remove_cards()
+    {
+        let answerCards = [...document.getElementById("AnswerRow").children];
+        answerCards.forEach((card) => { card.remove() });
+
+        let questionCards = [...document.getElementById("QuestionRow").children];
+        questionCards.forEach((card) => { card.remove() });
     }
 }
 
