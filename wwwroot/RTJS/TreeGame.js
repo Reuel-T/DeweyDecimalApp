@@ -207,6 +207,14 @@ function add_cards() {
     ans = document.getElementById("Answer");
     ans.innerText = answerPath[2].description;
 
+    let displayAns = `${answerPath[2].number} - ${answerPath[2].description}`;
+
+    ansP = document.getElementById("ans_pass");
+    ansF = document.getElementById("ans_fail");
+
+    ansP.innerText = displayAns;
+    ansF.innerText = displayAns;
+
     //get each row div
     div1 = document.getElementById('l1Row');
     div2 = document.getElementById('l2Row');

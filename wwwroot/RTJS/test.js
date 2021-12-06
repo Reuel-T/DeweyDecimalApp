@@ -183,7 +183,9 @@ async function init_stage(autoplay)
     {
         console.log("document ready");
         $("#countdown_span").text(game_time);
-        $("#streak span").text(streak);
+        //info spans
+        $("#score_info span").text(score);
+        $("#streak_info span").text(streak);
 
         var colours = Array("red1", "blue1", "green1", "orange1", "black1");
 
@@ -245,13 +247,32 @@ async function init_stage(autoplay)
                     {
                         game_time-=5;
                     }
+                    if (game_time <= 15)
+                    {
+                        game_time = 15;
+                    }
+
                     $("#streak").show();
 
                     $("#score").show();
 
-                    $("#streak span").text(streak);
-                    $("#score span").text(score);
+                    //form spans
+                    $("#streak_go_pass span").text(streak);
+                    $("#score_go_pass span").text(score);
+
+                    //info spans
+                    $("#score_info span").text(score);
+                    $("#streak_info span").text(streak);
+
+                    //set form value
                     $("#frm_score").attr('value', score);
+
+                    if (score < 1) {
+                        $("#score_submit").hide();
+                    }
+                    else {
+                        $("#score_submit").show();
+                    }
                 }
             }
         });// sortable ul
@@ -278,14 +299,25 @@ async function init_stage(autoplay)
                 $("#dewey_decimal_game_stage ul").sortable({ disabled: true });
                 $("#game_over_fail").fadeIn();
                 $("#dewey_decimal_game_stage").addClass("game_over");
-                
+
+                //form spans
+                $("#streak_go_fail span").text(streak);
+                $("#score_go_fail span").text(score);
+
+                //info spans
+                $("#score_info span").text(score);
+                $("#streak_info span").text(streak);
+
+                $("#frm_score_fail").attr('value', score);
+
                 if (score < 1) {
-                    $("#score_submit").hide();
+                    $("#score_submit_fail").hide();
                 }
-                else
-                {
-                    $("#score_submit").show();
+                else {
+                    $("#score_submit_fail").show();
                 }
+
+
                 streak = 0;
                 game_time = 45;
                 //setTimeout(function () { $("#game_over_fail, .book").click(function () { $(".book").off("click"); init_stage(true); }) }, 500);

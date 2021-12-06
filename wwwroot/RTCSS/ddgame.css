@@ -166,21 +166,21 @@
 #game_over_success,
 #game_over_fail {
     width: 750px;
-    
-    /*display: none;*/
+    display: none;
     cursor: pointer;
     position: absolute;
-    bottom: 50px;
-    border-radius: 20px; 
+    border-radius: 20px;
     box-shadow: 9px 9px 19px -8px rgba(0,0,0,0.75);
 }
 
 #game_over_success {
     background-color: white;
-    height: 400px;
+    height: 600px;
+    bottom: 25px;
 }
 
 #game_over_fail {
     background-color: white;
     height: 500px;
+    bottom: 50px;
 }
