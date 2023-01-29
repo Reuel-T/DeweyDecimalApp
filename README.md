@@ -25,7 +25,7 @@ Points for a round are calculated as follows:
 Round_Score = ((Time_Left * 100) * Current_Streak)
 ```
 
-Minigame code taken from [here](https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top)
+Minigame code adapted from [here](https://sixthformstudyskills.ncl.ac.uk/libraries/game-dewey-decimal/#hidden_nav_top)
 
 ## Identifying Areas
 
